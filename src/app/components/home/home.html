@@ -4,43 +4,23 @@
       <input class="search-input w-75" type="text" placeholder="Search" />
       <button class="btn btn-warning text-white w-25 ms-3" id="search-btn">Search</button>
     </div>
-    <div class="restaurants">
-      <div class="restaurant-card">
-        <img src="Babla.jpg" alt="img" class="w-100" />
-        <div class="bottom-content">
-          <div class="heading">
-            <h3>Hotel Babla</h3>
-            <h3>* 4.3</h3>
+    <div class="restaurants mt-3">
+      @for (item of restaurants; track $index) {
+        <div class="restaurant-card">
+          <img src="Babla.jpg" alt="img" class="w-100" />
+          <div class="bottom-content">
+            <div class="heading">
+              <h3>{{ item.name }}</h3>
+              <h3>* 4.3</h3>
+            </div>
+            <p>North Indian</p>
+            <p>Anandnagar 0.2km</p>
+            <button class="btn btn-light" (click)="openRestaurant(item.id)">
+              Order Food
+            </button>
           </div>
-          <p>North Indian</p>
-          <p>Anandnagar 0.2km</p>
-          <button class="btn btn-light">Order Food</button>
         </div>
-      </div>
-      <div class="restaurant-card">
-        <img src="shivani.jpg" alt="img" class="w-100" />
-        <div class="bottom-content">
-          <div class="heading">
-            <h3>Hotel Babla</h3>
-            <h3>* 4.3</h3>
-          </div>
-          <p>North Indian</p>
-          <p>Anandnagar 0.2km</p>
-          <button class="btn btn-light">Order Food</button>
-        </div>
-      </div>
-      <div class="restaurant-card">
-        <img src="cafe-bist.jpg" alt="img" class="w-100" />
-        <div class="bottom-content">
-          <div class="heading">
-            <h3>Hotel Babla</h3>
-            <h3>* 4.3</h3>
-          </div>
-          <p>North Indian</p>
-          <p>Anandnagar 0.2km</p>
-          <button class="btn btn-light">Order Food</button>
-        </div>
-      </div>
+      }
     </div>
   </div>
 </div>

@@ -1,0 +1,25 @@
+<div class="restaurant">
+  <div class="heading d-flex justify-content-center mb-3">
+    <h1>
+      {{ restaurantInfo.name }}
+    </h1>
+    <div class="rating-badge">
+      <span class="badge bg-success">★ {{ restaurantInfo.rating }}</span>
+    </div>
+  </div>
+  <div class="food-items">
+    @for (item of restaurantItemList; track $index) {
+      <div class="item-card">
+        <img class="w-100" src="Babla.jpg" alt="food-image" height="200px" />
+        <div class="bottom-content">
+          <div class="heading">
+            <h3>{{item.name}}</h3>
+            <span class="badge bg-success">★ {{ item.rating }}</span>
+          </div>
+          <p>{{item.descreption}}</p>
+          <button class="btn btn-warning w-100 fw-bold">Add To Cart</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

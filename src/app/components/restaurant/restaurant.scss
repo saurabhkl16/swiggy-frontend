@@ -1,0 +1,31 @@
+.restaurant {
+  padding: 20px 100px;
+
+  .food-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+
+    .item-card {
+      background-color: #ff5200;
+      min-height: 400px;
+      border-radius: 6px;
+      color: white;
+      overflow: hidden; 
+
+      .bottom-content {
+        padding: 15px;
+
+        .heading {
+          display: flex;
+          justify-content: space-between;
+
+          h3 {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

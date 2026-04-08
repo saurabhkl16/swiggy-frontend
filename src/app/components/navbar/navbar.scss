@@ -1,4 +1,29 @@
 .navbar {
-    background-color: #ff5200;
-    padding: 10px 30px; 
+  background-color: #ff5200;
+  padding: 10px 30px;
+
+  .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.cart-icon {
+  position: relative; /* Important for badge positioning */
+  display: inline-block; /* Keep icon inline */
+  font-size: 32px; /* Optional: size of cart icon */
+}
+
+.cart-count {
+  position: absolute;
+  top: 5px; /* Adjust vertical */
+  right: -10px; /* Adjust horizontal */
+  font-size: 12px; /* Smaller badge */
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
