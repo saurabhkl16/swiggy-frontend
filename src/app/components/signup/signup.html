@@ -1,1 +1,35 @@
-<p>signup works!</p>
+<div class="signup-container">
+  <div class="signup-card">
+    <h1 class="mb-4">Sign up</h1>
+    <form #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)">
+      <input
+        class="name mb-4"
+        name="name"
+        type="text"
+        placeholder="Enter your name"
+        maxlength="20"
+        ngModel
+      />
+      <input
+        class="email-id mb-4"
+        name="email-id"
+        type="text"
+        placeholder="Enter your mail id"
+        maxlength="30"
+        ngModel
+      />
+      <input
+        class="mobile-number mb-4"
+        name="mobile-number"
+        type="text"
+        placeholder="Enter Mobile Number"
+        maxlength="10"
+        ngModel
+      />
+      <div class="d-flex">
+        <button class="signup-btn w-100" type="submit">Signup</button>
+        <button class="signup-btn w-100" routerLink="/login">Login</button>
+      </div>
+    </form>
+  </div>
+</div>

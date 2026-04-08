@@ -1,1 +1,21 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-card">
+    <h1>Login</h1>
+    <p class="mb-4">Order food online and enjoy your meal.</p>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+      <input
+        class="mobile-number mb-4"
+        name="mobile-number"
+        type="text"
+        placeholder="Enter Mobile Number"
+        maxlength="10"
+        ngModel
+      />
+      <button class="login-btn" type="submit">Login</button>
+      <p class="signup-text">
+        <a  [routerLink]="['/signup']">Create an account</a>
+      </p>
+      <p class="">By clicking on Login, I accept the Terms & Conditions & Privacy Policy</p>
+    </form>
+  </div>
+</div>

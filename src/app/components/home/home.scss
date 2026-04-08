@@ -1,11 +1,38 @@
-.search-bar{
-    padding: 20px 50px;
-}
+.search-bar {
+  padding: 20px 50px;
 
-.search-input {
+  .search-input {
     padding: 5px;
-}
+  }
 
-#search-btn{
+  #search-btn {
     background-color: #ff5200;
+  }
+
+  .restaurants {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 15px;
+    row-gap: 15px;
+
+    .restaurant-card {
+      background-color: #ff5200;
+      min-height: 500px;
+      border-radius: 6px;
+      color: white;
+
+      .bottom-content {
+        padding: 15px;
+
+        .heading {
+          display: flex;
+          justify-content: space-between;
+
+          h3 {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
 }
