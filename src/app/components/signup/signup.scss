@@ -12,7 +12,7 @@
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    height: 400px;
+    height: 450px;
     width: 400px;
     text-align: center;
   }
@@ -29,6 +29,10 @@
     color: white;
     margin-inline: 5px;
     font-weight: 600;
+  }
+
+  .signup-btn:hover {
+    background-color: rgb(167, 56, 5);
   }
 
   form {

@@ -2,20 +2,61 @@
   <div class="login-card">
     <h1>Login</h1>
     <p class="mb-4">Order food online and enjoy your meal.</p>
-    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
-      <input
-        class="mobile-number mb-4"
-        name="mobile-number"
-        type="text"
-        placeholder="Enter Mobile Number"
-        maxlength="10"
-        ngModel
-      />
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <div class="mobile-field">
+        <input
+          class="mobile-numbe w-100"
+          name="mobileNumber"
+          type="text"
+          placeholder="Enter Mobile Number"
+          maxlength="10"
+          pattern="^[0-9]{10}$"
+          [(ngModel)]="mobileNumber"
+          ngModel
+          required
+        />
+        @if (
+          loginForm.controls['mobileNumber']?.invalid && loginForm.controls['mobileNumber']?.touched
+        ) {
+          <div class="error-message">
+            @if (loginForm.controls['mobileNumber']?.errors?.['required']) {
+              <span>Required field</span>
+            }
+            @if (loginForm.controls['mobileNumber']?.errors?.['pattern']) {
+              <span>Only digits can allowed & minimum length 10</span>
+            }
+          </div>
+        } @else {
+          <div class="error-message"></div>
+        }
+      </div>
+      <div class="password-field">
+        <input
+          class="password w-100"
+          name="password"
+          type="password"
+          placeholder="Enter password"
+          maxlength="20"
+          [(ngModel)]="password"
+          ngModel
+          required
+        />
+        @if (loginForm.controls['password']?.invalid && loginForm.controls['password']?.touched) {
+          <div class="error-message">
+            @if (loginForm.controls['password']?.errors?.['required']) {
+              <span>Required field</span>
+            }
+          </div>
+        } @else {
+          <div class="error-message"></div>
+        }
+      </div>
       <button class="login-btn" type="submit">Login</button>
       <p class="signup-text">
-        <a  [routerLink]="['/signup']">Create an account</a>
+        <a [routerLink]="['/signup']">Create an account</a>
       </p>
       <p class="">By clicking on Login, I accept the Terms & Conditions & Privacy Policy</p>
     </form>
   </div>
 </div>
+<!-- pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,20}$" -->

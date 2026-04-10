@@ -2,10 +2,14 @@
   background-color: #ff5200;
   padding: 10px 30px;
 
-  .right {
+  .right .nav-item {
+    margin-inline: 10px;
+  }
+  ul li:first-child {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
   }
 }
 
@@ -26,4 +30,30 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+}
+
+.dropdown-menu {
+  position: absolute; /* keep it floating */
+  top: 100%; /* directly below toggle */
+  left: auto;
+  right: 0; /* align to right edge */
+}
+
+.person-icon .dropdown-toggle::after {
+  display: none; /* removes the arrow */
+}
+
+.person-icon .nav-link {
+  background-color: #fff;       /* or any color you like */
+  border-radius: 50%;           /* makes it circular */
+  width: 40px;                  /* fixed size */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;                   /* remove extra padding */
+}
+.person-icon mat-icon {
+  font-size: 23px;              /* adjust icon size */
+  color: #ff5200;               /* icon color */
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { MainService } from '../../services/main-service';
 
 @Component({
   selector: 'navbar',
@@ -8,4 +9,6 @@ import { RouterModule } from '@angular/router';
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })
-export class Navbar {}
+export class Navbar {
+  constructor(public mainService: MainService) {}
+}

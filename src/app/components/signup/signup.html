@@ -1,35 +1,90 @@
 <div class="signup-container">
   <div class="signup-card">
-    <h1 class="mb-4">Sign up</h1>
-    <form #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)">
-      <input
-        class="name mb-4"
-        name="name"
-        type="text"
-        placeholder="Enter your name"
-        maxlength="20"
-        ngModel
-      />
-      <input
-        class="email-id mb-4"
-        name="email-id"
-        type="text"
-        placeholder="Enter your mail id"
-        maxlength="30"
-        ngModel
-      />
-      <input
-        class="mobile-number mb-4"
-        name="mobile-number"
-        type="text"
-        placeholder="Enter Mobile Number"
-        maxlength="10"
-        ngModel
-      />
-      <div class="d-flex">
-        <button class="signup-btn w-100" type="submit">Signup</button>
-        <button class="signup-btn w-100" routerLink="/login">Login</button>
+    <h1 class="mb-4">Sign Up</h1>
+    <form #signupForm="ngForm" (ngSubmit)="signup(signupForm)">
+      <div class="name-field">
+        <input
+          class="name w-100"
+          name="name"
+          type="text"
+          placeholder="Enter your name"
+          maxlength="15"
+          ngModel
+          required
+          pattern="^[A-Za-z]+$"
+        />
+        @if (signupForm.controls['name']?.invalid && signupForm.controls['name']?.touched) {
+          <div class="error-message">
+            @if (signupForm.controls['name']?.errors?.['required']) {
+              <span>Required field</span>
+            }
+            @if (signupForm.controls['name']?.errors?.['pattern']) {
+              <span>Only alphbets allowed</span>
+            }
+          </div>
+        } @else {
+          <div class="error-message"></div>
+        }
       </div>
+      <div class="mobile-field">
+        <input
+          class="mobile-numbe w-100"
+          name="mobileNumber"
+          type="text"
+          placeholder="Enter Mobile Number"
+          maxlength="10"
+          pattern="^[0-9]{10}$"
+          ngModel
+          required
+        />
+        @if (
+          signupForm.controls['mobileNumber']?.invalid &&
+          signupForm.controls['mobileNumber']?.touched
+        ) {
+          <div class="error-message">
+            @if (signupForm.controls['mobileNumber']?.errors?.['required']) {
+              <span>Required field</span>
+            }
+            @if (signupForm.controls['mobileNumber']?.errors?.['pattern']) {
+              <span>Only digits can allowed & minimum length 10</span>
+            }
+          </div>
+        } @else {
+          <div class="error-message"></div>
+        }
+      </div>
+      <div class="password-field">
+        <input
+          class="password w-100"
+          name="password"
+          type="password"
+          placeholder="Enter password"
+          maxlength="20"
+          ngModel
+          required
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
+        />
+        @if (signupForm.controls['password']?.invalid && signupForm.controls['password']?.touched) {
+          <div class="error-message">
+            @if (signupForm.controls['password']?.errors?.['required']) {
+              <span>Required field</span>
+            }
+            @if (signupForm.controls['password']?.errors?.['pattern']) {
+              <span
+                >Password must at least 1 number, 1 lowercase, 1 uppercase & minimum 8
+                characters.</span
+              >
+            }
+          </div>
+        } @else {
+          <div class="error-message"></div>
+        }
+      </div>
+      <div class="d-flex">
+        <button class="signup-btn w-100" routerLink="/login">Login</button>
+        <button class="btn btn-success w-100" type="submit">SignUp</button>
+      </div>
+      <p class="">By clicking on Login, I accept the Terms & Conditions & Privacy Policy</p>
     </form>
   </div>
 </div>

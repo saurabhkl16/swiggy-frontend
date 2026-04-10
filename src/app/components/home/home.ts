@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MainService } from '../../services/main-service';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +9,25 @@ import { Router } from '@angular/router';
   styleUrl: './home.scss',
 })
 export class Home {
-  public restaurants = [
-    { id: 1, name: 'Dominos' },
-    { id: 2, name: 'KFC' },
-    { id: 3, name: 'McDonalds' },
-  ];
+  public restaurants: any[] = [];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private mainService: MainService,
+  ) {}
+
+  ngOnInit() {
+    this.mainService.getRestaurants().subscribe({
+      next: (res) => {
+        console.log(res,this.restaurants)
+        this.restaurants = res;
+        console.log(res,this.restaurants)
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 
   public openRestaurant(id: number) {
     this.router.navigate(['/restaurant', id]);
