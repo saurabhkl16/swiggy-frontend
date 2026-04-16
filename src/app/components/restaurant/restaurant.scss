@@ -1,11 +1,14 @@
 .restaurant {
+  background-color: black;
+  height: 100vh;
+  color: white;
   padding: 20px 100px;
 
   .food-items {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 20px;
+    column-gap: 30px;
+    row-gap: 30px;
 
     .item-card {
       background-color: #ff5200;
@@ -16,6 +19,13 @@
 
       .bottom-content {
         padding: 15px;
+
+        .quantity-input {
+          border: none;
+          border-radius: 6px;
+          text-align: center;
+
+        }
 
         .heading {
           display: flex;

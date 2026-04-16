@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MainService } from '../../services/main-service';
 
@@ -14,14 +14,15 @@ export class Home {
   constructor(
     private router: Router,
     private mainService: MainService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
     this.mainService.getRestaurants().subscribe({
       next: (res) => {
-        console.log(res,this.restaurants)
         this.restaurants = res;
-        console.log(res,this.restaurants)
+        this.cdr.detectChanges();
+        console.log(res);
       },
       error: (err) => {
         console.log(err);
@@ -30,6 +31,10 @@ export class Home {
   }
 
   public openRestaurant(id: number) {
-    this.router.navigate(['/restaurant', id]);
+    if (this.mainService.isLogin() === true) {
+      this.router.navigate(['/restaurant', id]);
+    } else {
+      this.mainService.showError('Please LogIn First');
+    }
   }
 }

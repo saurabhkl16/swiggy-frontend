@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { MainService } from '../../services/main-service';
 
 @Component({
   selector: 'app-cart',
@@ -7,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './cart.scss',
 })
 export class Cart {
+  public totalMrp = signal(0);
+  public totalFees = signal(0);
+  public totalDiscounts = signal(0);
+  public totalAmount = signal(0);
 
+  constructor(public service: MainService) {
+    this.service.updateTotals();
+  }
+
+  ngOnInit() {}
 }

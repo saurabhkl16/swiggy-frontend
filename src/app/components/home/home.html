@@ -4,19 +4,21 @@
       <input class="search-input w-75" type="text" placeholder="Search" />
       <button class="btn btn-warning text-white w-25 ms-3" id="search-btn">Search</button>
     </div>
-    @if (restaurants.length > 0) {
+    @if (restaurants.length) {
       <div class="restaurants mt-3">
         @for (item of restaurants; track $index) {
           <div class="restaurant-card">
-            <img src="Babla.jpg" alt="img" class="w-100" />
+            <img [src]="item.image" alt="img" class="w-100" />
             <div class="bottom-content">
               <div class="heading">
                 <h3>{{ item.name }}</h3>
-                <h3>* 4.3</h3>
+                <h3>
+                  <span class="badge bg-success">★ {{ item.rating }}</span>
+                </h3>
               </div>
               <p>North Indian</p>
               <p>{{ item.address }}</p>
-              <button class="btn btn-light" (click)="openRestaurant(item.id)">Order Food</button>
+              <button class="btn btn-light w-100" (click)="openRestaurant(item.id)">Menu</button>
             </div>
           </div>
         }

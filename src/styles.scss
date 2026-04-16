@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'ngx-toastr/toastr';
+@use 'ngx-toastr/toastr';
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
 }
 
 .badge {
@@ -20,4 +26,17 @@
   line-height: 1.2;
   margin-bottom: 8px;
   text-align: start;
+}
+
+// Remove arraow from input type number:
+/* Chrome, Edge, Safari */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }

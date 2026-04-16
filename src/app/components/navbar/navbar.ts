@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MainService } from '../../services/main-service';
 
 @Component({
@@ -10,5 +10,9 @@ import { MainService } from '../../services/main-service';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
-  constructor(public mainService: MainService) {}
+  constructor(public mainService: MainService, private router: Router) {}
+
+  public logout() {
+  this.router.navigate(['/login']);
+}
 }

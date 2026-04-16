@@ -7,19 +7,56 @@
       <span class="badge bg-success">★ {{ restaurantInfo.rating }}</span>
     </div>
   </div>
+  <div class="search-bar d-flex mb-5">
+    <input class="search-input w-75" type="text" placeholder="Search" />
+    <button class="btn btn-warning text-white w-25 ms-3" id="search-btn">Search</button>
+  </div>
   <div class="food-items">
-    @for (item of restaurantItemList; track $index) {
-      <div class="item-card">
-        <img class="w-100" src="Babla.jpg" alt="food-image" height="200px" />
-        <div class="bottom-content">
-          <div class="heading">
-            <h3>{{item.name}}</h3>
-            <span class="badge bg-success">★ {{ item.rating }}</span>
+    @if (service.restaurantItemList.length) {
+      <ng-container>
+        @for (item of service.restaurantItemList; track $index) {
+          <div class="item-card">
+            <img class="w-100" src="Babla.jpg" alt="food-image" height="200px" />
+            <div class="bottom-content">
+              <div class="heading">
+                <h3>{{ item.name }}</h3>
+                <span class="badge bg-success">★ {{ item.rating }}</span>
+              </div>
+              <p>{{ item.description }}</p>
+              <div class="d-flex align-items-center mb-3">
+                <h5 class="text-center w-50 m-0">&#8377; {{ item.price }}</h5>
+                <div class="quantity d-flex w-50">
+                  <button
+                    class="btn btn-light fw-bold me-2"
+                    (click)="service.updateQuantity('-', item)"
+                    [disabled]="item.quantity === 0"
+                  >
+                    -
+                  </button>
+                  <input
+                    class="quantity-input w-50 me-2"
+                    type="number"
+                    name="quantity"
+                    id="{{ item.id }}"
+                    [value]="item.quantity"
+                    disabled
+                  />
+                  <button class="btn btn-light fw-bold" (click)="service.updateQuantity('+', item)">
+                    +
+                  </button>
+                </div>
+              </div>
+              <button
+                class="btn btn-warning w-100 fw-bold"
+                (click)="addItemToCart(item)"
+                [disabled]="item.quantity === 0"
+              >
+                Add To Cart
+              </button>
+            </div>
           </div>
-          <p>{{item.descreption}}</p>
-          <button class="btn btn-warning w-100 fw-bold">Add To Cart</button>
-        </div>
-      </div>
+        }
+      </ng-container>
     }
   </div>
 </div>

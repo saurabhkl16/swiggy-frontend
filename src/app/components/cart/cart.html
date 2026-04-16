@@ -1,1 +1,96 @@
-<p>cart works!</p>
+<div class="cart">
+  <div class="main-content">
+    @if (service.myCart().length === 0) {
+      <div class="empty-cart">
+        <div
+          class="empty-cart d-flex justify-content-center align-items-center flex-column text-center"
+        >
+          <img src="/empty-cart.png" alt="cart-image" />
+          <h4>Your cart is empty !</h4>
+        </div>
+      </div>
+    } @else {
+      <div class="d-flex">
+        <div class="left w-50">
+          <div class="address d-flex justify-content-between align-items-center">
+            <p class="m-0">Delever to: Bnagalore 431636</p>
+            <button class="btn btn-dark">Change</button>
+          </div>
+          @for (item of service.myCart(); track $index) {
+            <div class="cart-item mt-2">
+              <div class="d-flex">
+                <div class="img me-5">
+                  <img src="" alt="item-image" height="100px" />
+                </div>
+                <div class="item-info w-100 mb-3">
+                  <p class="name">{{ item.name }}</p>
+                  <p class="rating d-flex">
+                    <span class="badge bg-success me-2">★ {{ item.rating }}</span>
+                    <span>(1,220)</span>
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="w-50 m-0">&#8377; {{ item.price }}</h5>
+                    <div class="quantity d-flex w-50">
+                      <button
+                        class="btn btn-warning fw-bold me-2"
+                        (click)="service.updateQuantity('-', item)"
+                        [disabled]="item.quantity === 0"
+                      >
+                        -
+                      </button>
+                      <input
+                        class="quantity-input w-50 me-2"
+                        type="number"
+                        name="quantity"
+                        id="{{ item.id }}"
+                        [value]="item.quantity"
+                        disabled
+                      />
+                      <button
+                        class="btn btn-warning fw-bold"
+                        (click)="service.updateQuantity('+', item)"
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="m-0">Express delevery in 30 mins.</p>
+                <button class="btn btn-danger">Remove</button>
+              </div>
+            </div>
+          }
+        </div>
+        <div class="right w-50">
+          <div class="bg-light p-3">
+            <div
+              class="mrp d-flex justify-content-between align-items-center border-bottom border-secondary"
+            >
+              <p class="">MRP</p>
+              <p>&#8377; {{ service.totalMrp() }}</p>
+            </div>
+            <div
+              class="fees d-flex justify-content-between align-items-center border-bottom border-secondary"
+            >
+              <p class="">Fees / GST / Other Tax</p>
+              <p class="text-danger">+&#8377; {{ service.totalFees() }}</p>
+            </div>
+            <div
+              class="descounts d-flex justify-content-between align-items-center border-bottom border-secondary"
+            >
+              <p class="">Discounts</p>
+              <p class="text-success">-&#8377; {{ service.totalDiscounts() }}</p>
+            </div>
+            <div class="descounts d-flex justify-content-between align-items-center fw-bold">
+              <p class="">Total Ammount</p>
+              <p>&#8377; {{ service.totalAmount() }}</p>
+            </div>
+            <button class="btn btn-warning w-100">Place Order</button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
